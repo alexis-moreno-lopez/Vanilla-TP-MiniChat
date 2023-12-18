@@ -1,0 +1,16 @@
+body{
+    background-color: brown;
+}
+.bulle-messsage{
+   width: 500px;
+display: flex;
+align-items:center;
+}
+.carre{
+    border: solid black 2px;
+    height: 800px;
+    width: 1300px;
+    background: grey;
+    display: flex;
+    align-items: center;
+}
