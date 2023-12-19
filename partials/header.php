@@ -1,3 +1,7 @@
+<?php
+require_once('../procces/traitement-retour.php');
+require_once('../database.connect.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +22,14 @@
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Users</h5>
+        
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    
-        </form>
+       
       </div>
+       
+      <?php foreach($pseudos as $pseudo){ ?>
+            <?php echo '<p>' . $pseudo["pseudo"] . '</p>' ?>
+      <?php } ?> 
     </div>
   </div>
 </nav>

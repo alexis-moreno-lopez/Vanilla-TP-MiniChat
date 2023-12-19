@@ -1,12 +1,13 @@
 <?php
 
-var_dump($_GET);
+
 
 
 
 if (
     isset($_POST["user"]) && !empty($_POST["user"]) &&
     isset($_POST["message"]) && !empty($_POST["message"])
+
   
     ) {
        
@@ -22,11 +23,20 @@ if (
          'pseudo' =>$_POST["user"],
      ]);
 
-     $request=$database->prepare("INSERT INTO `message` (content)
-     VALUES(:content)");
+     $lastId = $database->lastInsertId();
+     $date = date('d-m-y h:i:s');
+     $ip=$_SERVER['REMOTE_ADDR'];
+
+     $request=$database->prepare("INSERT INTO `message` (content ,created_at, ip_adress, user_id )
+     VALUES(:content, :created_at, :ip_adress, :user_id)");
    
       $request->execute([
-          'content'=>$_POST["text"]
+          'content'=>$_POST["message"],
+          'created_at'=>$date,
+          'ip_adress'=>$ip,
+          'user_id'=>$lastId
+          
+
       ]);
      
      
